@@ -16,12 +16,16 @@
         for (int i = 0; cells.Length > i; i++)
         {
             var boardCell = cells[i];
+            string symbol = _formatter.ToSymbol(boardCell);
+            var colour = _formatter.GetColor(boardCell);
+            Console.ForegroundColor = colour;
 
             if (i > 0 && i % sideLength == 0)
             {
                 Console.WriteLine("\n---+---+---");
             }
-            Console.Write($" {_formatter.ToSymbol(boardCell)}");
+            Console.Write($" {symbol}");
+            Console.ResetColor();
             if ((i + 1) % sideLength != 0)
             {
                 Console.Write(" |");
